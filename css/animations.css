@@ -1,0 +1,92 @@
+.js .site-header {
+  opacity: 0;
+  animation: nav-fade-in 400ms ease-out forwards;
+  animation-delay: 60ms;
+}
+
+.js .hero-headline,
+.js .hero-subtext,
+.js .hero-cta {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: hero-reveal 700ms ease-out forwards;
+}
+
+.js .hero-headline {
+  animation-delay: 120ms;
+}
+
+.js .hero-subtext {
+  animation-delay: 240ms;
+}
+
+.js .hero-cta {
+  animation-delay: 320ms;
+}
+
+.submit-button {
+  transition: transform 170ms ease, filter 170ms ease, box-shadow 170ms ease;
+}
+
+.submit-button:hover,
+.submit-button:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 20px -12px rgba(9, 69, 63, 0.55);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  filter: brightness(1);
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 560ms ease-out, transform 560ms ease-out;
+  will-change: opacity, transform;
+}
+
+.js .reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .site-header,
+  .js .hero-headline,
+  .js .hero-subtext,
+  .js .hero-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .reveal,
+  .js .reveal.reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
