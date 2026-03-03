@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sstori.com | Digital Agency</title>
+  <title>sstori.com | AI-Powered Digital Agency</title>
+  <meta name="description"
+    content="sstori.com is a digital agency that designs and builds modern websites using AI-accelerated execution. Ideas go live in days, not months.">
+  <meta property="og:title" content="sstori.com | AI-Powered Digital Agency">
+  <meta property="og:description"
+    content="Imagined by humans. Realized by AI. Modern websites built at the speed of thought.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#08080f">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
+
 <body class="site-body">
   <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
       <div class="nav-container">
-        <a href="#home" class="brand-logo">
-          <img src="assets/images/sstori-logo.png" alt="sstori.com" class="brand-logo-image">
-          <span class="brand-logo-text">sstori.com</span>
+        <a href="#home" class="brand-logo" aria-label="sstori.com home">
+          <span class="brand-logo-text"><span class="brand-pair-1">ss</span><span class="brand-pair-2">to</span><span
+              class="brand-pair-3">ri</span><span class="brand-logo-dot">.com</span></span>
         </a>
         <ul class="nav-links">
           <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
           <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-          <!-- <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>-->
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
@@ -29,74 +37,124 @@
 
   <main class="site-main">
     <section id="home" class="hero-section">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-mouse-glow"></div>
       <div class="hero-content">
-        <h1 class="hero-headline">Imagined by humans. Realized by AI.</h1>
-        <p class="hero-subtext">sstori.com is a digital agency that designs and builds modern websites using AI-accelerated execution, so your ideas go live in days instead of months.</p>
+        <h1 class="hero-headline">Imagined by humans.<br><span class="text-gradient">Realized by AI.</span></h1>
+        <p class="hero-subtext">We design and build modern websites using AI-accelerated execution, so your ideas go
+          live in days instead of months.</p>
         <a href="#contact" class="hero-cta submit-button">Start a conversation</a>
       </div>
     </section>
+
+    <hr class="section-divider">
 
     <section id="about" class="about-section reveal">
       <div class="section-container">
         <h2 class="section-title">About</h2>
         <p class="about-text">
-          sstori.com was born from years of caring deeply about how ideas come to life. The exact words. 
-          The precise layout. The perfect pixels. This level of craft has always been possible—but never this fast. 
+          sstori.com was born from years of caring deeply about how ideas come to life. The exact words.
+          The precise layout. <strong>The perfect pixels.</strong> This level of craft has always been possible — but
+          never this fast.
           Today, that same standard of perfection can be achieved in a fraction of the time, without compromise.
         </p>
         <p class="about-text">
-          That perfection becomes your asset. A visual presence that persuades, differentiates, and creates momentum. It works continuously in the background, building trust, attracting the right people, and turning attention into opportunity and growth.
+          That perfection becomes your asset. <strong>A visual presence that persuades, differentiates, and creates
+            momentum.</strong> It works continuously in the background — building trust, attracting the right people,
+          and turning attention into opportunity and growth.
         </p>
       </div>
     </section>
 
+    <hr class="section-divider">
+
     <section id="services" class="services-section reveal">
       <div class="section-container">
         <h2 class="section-title">Services</h2>
+        <p class="section-subtitle">Everything you need to establish a commanding digital presence.</p>
         <div class="services-grid">
           <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
             <h3 class="service-title">Brand Strategy</h3>
-            <p class="service-description">We define the narrative and positioning that makes your business unmistakable and valuable.</p>
+            <p class="service-description">We define the narrative and positioning that makes your business
+              unmistakable. From voice to visuals, every detail is intentional.</p>
           </article>
           <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+            </div>
             <h3 class="service-title">UX/UI Design</h3>
-            <p class="service-description">We design interfaces that feel obvious, reduce friction, and move people to act.</p>
+            <p class="service-description">Interfaces that feel obvious, reduce friction, and move people to act.</p>
           </article>
           <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+                <line x1="14" y1="4" x2="10" y2="20" />
+              </svg>
+            </div>
             <h3 class="service-title">Web Development</h3>
-            <p class="service-description">We build high-performance websites engineered to convert attention into growth.</p>
+            <p class="service-description">High-performance websites engineered to convert attention into growth.</p>
           </article>
           <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.92L12 22" />
+                <path d="M12 2a4 4 0 0 0-4 4c0 1.95 1.4 3.57 3.25 3.92" />
+                <circle cx="12" cy="6" r="1" />
+              </svg>
+            </div>
             <h3 class="service-title">AI Workflow Integration</h3>
-            <p class="service-description">We embed AI into the creative and production process to increase speed, precision, and capability.</p>
+            <p class="service-description">AI embedded into the creative and production process to increase speed,
+              precision, and capability.</p>
           </article>
         </div>
       </div>
     </section>
-<!--
-    <section id="portfolio" class="portfolio-section">
+
+    <hr class="section-divider">
+
+    <section class="stats-section reveal">
       <div class="section-container">
-        <h2 class="section-title">Portfolio</h2>
-        <div class="portfolio-grid">
-          <figure class="portfolio-item">
-            <img src="https://placehold.co/800x600?text=Image+Placeholder" alt="Project One placeholder image" class="portfolio-image-placeholder">
-            <figcaption class="portfolio-title">SafariWorkshops.com</figcaption>
-          </figure>
-          <figure class="portfolio-item">
-            <img src="https://placehold.co/800x600?text=Image+Placeholder" alt="Project Two placeholder image" class="portfolio-image-placeholder">
-            <figcaption class="portfolio-title">BetterManagers.club</figcaption>
-          </figure>
-          <figure class="portfolio-item">
-            <img src="https://placehold.co/800x600?text=Image+Placeholder" alt="Project Three placeholder image" class="portfolio-image-placeholder">
-            <figcaption class="portfolio-title">Project Three</figcaption>
-          </figure>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" data-target="5" data-suffix="x">0x</span>
+            <span class="stat-label">Faster Delivery</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="100" data-suffix="%">0%</span>
+            <span class="stat-label">AI-Accelerated</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">Zero</span>
+            <span class="stat-label">Bloat or Waste</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="14" data-suffix=" days">0 days</span>
+            <span class="stat-label">Idea to Launch</span>
+          </div>
         </div>
       </div>
     </section>
--->
+
+    <hr class="section-divider">
+
     <section id="contact" class="contact-section reveal">
       <div class="section-container">
-        <h2 class="section-title">Contact</h2>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p class="section-subtitle">Tell us about your project and we'll get back to you within 24 hours.</p>
         <form class="contact-form" action="#" method="post">
           <div class="form-group">
             <label for="name" class="form-label">Name</label>
@@ -108,10 +166,10 @@
           </div>
           <div class="form-group">
             <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project" rows="5" required></textarea>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project"
+              rows="5" required></textarea>
           </div>
           <button type="submit" class="submit-button">Send Message</button>
-          <!-- <p class="contact-info">hello@sstori.com</p>-->
         </form>
       </div>
     </section>
@@ -119,10 +177,11 @@
 
   <footer class="site-footer reveal">
     <div class="footer-container">
-      <p class="footer-text">&copy; 2025 sstori.com</p>
-      <!-- <p class="footer-text">hello@sstori.com | +1 (555) 123-4567</p>-->
+      <p class="footer-text">&copy; 2026 sstori.com</p>
     </div>
   </footer>
+  <script src="js/hero-canvas.js" defer></script>
   <script src="js/animations.js" defer></script>
 </body>
+
 </html>

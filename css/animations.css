@@ -1,49 +1,36 @@
 .js .site-header {
   opacity: 0;
-  animation: nav-fade-in 400ms ease-out forwards;
-  animation-delay: 60ms;
+  animation: nav-fade-in 500ms ease-out forwards;
+  animation-delay: 80ms;
 }
 
 .js .hero-headline,
 .js .hero-subtext,
 .js .hero-cta {
   opacity: 0;
-  transform: translateY(10px);
-  animation: hero-reveal 700ms ease-out forwards;
+  transform: translateY(18px);
+  animation: hero-reveal 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .js .hero-headline {
-  animation-delay: 120ms;
+  animation-delay: 200ms;
 }
 
 .js .hero-subtext {
-  animation-delay: 240ms;
+  animation-delay: 400ms;
 }
 
 .js .hero-cta {
-  animation-delay: 320ms;
+  animation-delay: 560ms;
 }
 
-.submit-button {
-  transition: transform 170ms ease, filter 170ms ease, box-shadow 170ms ease;
-}
-
-.submit-button:hover,
-.submit-button:focus-visible {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
-  box-shadow: 0 10px 20px -12px rgba(9, 69, 63, 0.55);
-}
-
-.submit-button:active {
-  transform: translateY(0);
-  filter: brightness(1);
-}
+/* ── Scroll reveal with stagger ── */
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 560ms ease-out, transform 560ms ease-out;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -52,11 +39,49 @@
   transform: translateY(0);
 }
 
+/* Staggered children — service cards, stat cards */
+.js .reveal .service-card,
+.js .reveal .stat-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal.reveal-visible .service-card,
+.js .reveal.reveal-visible .stat-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.js .reveal.reveal-visible .service-card:nth-child(1),
+.js .reveal.reveal-visible .stat-card:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.js .reveal.reveal-visible .service-card:nth-child(2),
+.js .reveal.reveal-visible .stat-card:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.js .reveal.reveal-visible .service-card:nth-child(3),
+.js .reveal.reveal-visible .stat-card:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+.js .reveal.reveal-visible .service-card:nth-child(4),
+.js .reveal.reveal-visible .stat-card:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+/* ── Keyframes ── */
+
 @keyframes hero-reveal {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(18px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -67,12 +92,25 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
+/* ── Card glow on hover ── */
+
+.service-card,
+.stat-card {
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+/* ── Reduced motion ── */
+
 @media (prefers-reduced-motion: reduce) {
+
   .js .site-header,
   .js .hero-headline,
   .js .hero-subtext,
@@ -88,5 +126,18 @@
     transform: none;
     transition: none;
     will-change: auto;
+  }
+
+  .js .reveal .service-card,
+  .js .reveal .stat-card,
+  .js .reveal.reveal-visible .service-card,
+  .js .reveal.reveal-visible .stat-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .submit-button::before {
+    animation: none;
   }
 }
