@@ -4,6 +4,33 @@
  */
 (function () {
   /* ═══════════════════════════════════════════
+     0. MOBILE NAVIGATION
+     ═══════════════════════════════════════════ */
+  var menuToggle = document.querySelector('.mobile-menu-toggle');
+  var navLinksContainer = document.querySelector('.nav-links');
+  var navLinks = document.querySelectorAll('.nav-link');
+
+  if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener('click', function () {
+      var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.classList.toggle('active');
+      navLinksContainer.classList.toggle('active');
+      document.body.style.overflow = isExpanded ? '' : 'hidden'; // Prevent scrolling when open
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ═══════════════════════════════════════════
      1. SCROLL REVEAL (IntersectionObserver)
      ═══════════════════════════════════════════ */
   var revealItems = document.querySelectorAll('.reveal');

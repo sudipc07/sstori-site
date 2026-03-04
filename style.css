@@ -153,6 +153,28 @@ a {
   -webkit-text-fill-color: rgba(139, 143, 163, 0.45);
 }
 
+.mobile-menu-toggle {
+  display: none;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-bright);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
 .nav-links {
   margin: 0;
   padding: 0;
@@ -427,9 +449,96 @@ a {
   opacity: 1;
 }
 
-/* Bento: first card is featured (spans 2 cols) */
-.service-card:first-child {
-  grid-column: span 2;
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ═══════════════════════════════════════════
+   5A. APPROACH SECTION
+   ═══════════════════════════════════════════ */
+.approach-section {
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.approach-layout {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.approach-text-col {
+  flex: 0 0 32%;
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+}
+
+.approach-text-col .section-subtitle {
+  margin-bottom: 0;
+}
+
+.approach-pills-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.approach-pill {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
+  padding: 1.25rem 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.approach-pill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background: radial-gradient(circle at left center, rgba(0, 232, 198, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.approach-pill:hover::before {
+  opacity: 1;
+}
+
+.approach-pill:hover {
+  border-color: rgba(0, 232, 198, 0.18);
+  transform: translateX(4px);
+  box-shadow: 0 0 20px rgba(0, 232, 198, 0.06);
+}
+
+.pill-title {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 0 0 0.3rem;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.01em;
+}
+
+.pill-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
 }
 
 .service-icon {
@@ -672,6 +781,10 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .approach-layout {
+    gap: 2rem;
+  }
+
   .service-card:first-child {
     grid-column: span 2;
   }
@@ -699,15 +812,55 @@ a {
   }
 
   .nav-container {
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0.7rem 0;
-    gap: 0.4rem;
+    padding: 1rem 0;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  /* Hamburger active state */
+  .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   .nav-links {
-    gap: 0.85rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(8, 8, 15, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
   }
 
   .hero-headline {
@@ -717,6 +870,16 @@ a {
   .services-grid,
   .portfolio-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .approach-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .approach-text-col {
+    position: static;
   }
 
   .service-card:first-child {
