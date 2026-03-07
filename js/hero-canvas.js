@@ -37,13 +37,17 @@
     var h = canvas.height / dpr;
     particles = [];
     for (var i = 0; i < count; i++) {
+      var speedX = (Math.random() - 0.5) * 0.7;
+      var speedY = (Math.random() - 0.5) * 0.7;
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.8 + 0.6,
-        opacity: Math.random() * 0.5 + 0.2,
+        vx: speedX,
+        vy: speedY,
+        baseVx: speedX,
+        baseVy: speedY,
+        radius: Math.random() * 2.0 + 0.8,
+        opacity: Math.random() * 0.6 + 0.4,
         hue: Math.random() > 0.7 ? 265 : 170 // teal or purple
       });
     }
@@ -59,19 +63,20 @@
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
 
-      // Mouse influence — gentle repulsion
+      // Mouse influence — repulsion
       var dx = p.x - mouse.x;
       var dy = p.y - mouse.y;
       var dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < mouseInfluence && dist > 0) {
-        var force = (mouseInfluence - dist) / mouseInfluence * 0.012;
+        var force = (mouseInfluence - dist) / mouseInfluence * 0.05; // Increased force
         p.vx += dx / dist * force;
         p.vy += dy / dist * force;
       }
 
-      // Dampen velocity
-      p.vx *= 0.995;
-      p.vy *= 0.995;
+      // Very gently return to base velocity to ensure constant movement (mobile friendly)
+      // We use a small factor so it doesn't instantly fight the mouse repulsion
+      p.vx += (p.baseVx - p.vx) * 0.005;
+      p.vy += (p.baseVy - p.vy) * 0.005;
 
       p.x += p.vx;
       p.y += p.vy;
@@ -103,12 +108,12 @@
         var dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < connectionDistance) {
-          var alpha = (1 - dist / connectionDistance) * 0.15;
+          var alpha = (1 - dist / connectionDistance) * 0.4;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
           ctx.strokeStyle = 'rgba(0, 232, 198, ' + alpha + ')';
-          ctx.lineWidth = 0.6;
+          ctx.lineWidth = 1.0;
           ctx.stroke();
         }
       }
