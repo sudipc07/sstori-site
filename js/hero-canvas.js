@@ -154,13 +154,22 @@
   createParticles();
   animate();
 
-  // Debounced resize
+  // Debounced resize (ignoring mobile vertical scroll resizes)
   var resizeTimer;
+  var lastWidth = window.innerWidth;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
-      resize();
-      createParticles();
+      var currentWidth = window.innerWidth;
+      // Only completely redraw particles if the width changed (e.g. device rotation or desktop resize)
+      if (Math.abs(currentWidth - lastWidth) > 50) {
+        lastWidth = currentWidth;
+        resize();
+        createParticles();
+      } else {
+        // Just resize the canvas element but KEEP the existing particles
+        resize();
+      }
     }, 200);
   });
 
