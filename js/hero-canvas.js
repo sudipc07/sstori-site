@@ -149,10 +149,18 @@
     mouse.y = -9999;
   });
 
-  // Init
-  resize();
-  createParticles();
-  animate();
+  // Init — defer to ensure hero section is fully laid out (Safari timing fix)
+  function init() {
+    resize();
+    createParticles();
+    animate();
+  }
+
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init);
+  }
 
   // Debounced resize (ignoring mobile vertical scroll resizes)
   var resizeTimer;
