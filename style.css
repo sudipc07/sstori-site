@@ -877,7 +877,11 @@ a {
   }
 
   .service-card:first-child {
-    grid-column: span 2;
+    grid-column: span 1;
+  }
+
+  .service-card:last-child:nth-child(3n + 1) {
+    grid-column: auto;
   }
 
   .stats-grid {
@@ -969,8 +973,9 @@ a {
     position: static;
   }
 
-  .service-card:first-child {
-    grid-column: span 1;
+  .service-card:first-child,
+  .service-card:last-child:nth-child(3n + 1) {
+    grid-column: auto;
   }
 
   .stats-grid {
